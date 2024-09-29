@@ -4,13 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        /* 카드 번호만 입력해야 해서 숫자 이외의 데이터가 입력되지 않게 설정함 */
+        #cardNo::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+        }
+        /* 글씨가 짤리지 않게 input 크기 조절 */
+        #cardNo{
+            width: 230px;
+        }
+    </style>
 </head>
 <body>
     <h3>결제창</h3>
     <div>
         <div id="price"></div>
         <p>신용카드 번호를 입력하고 결제 버튼을 눌러주세요</p>
-        <input id="cardNo" type="text">
+        <input id="cardNo" type="number" placeholder=" - 을 제외한 숫자를 입력해주세요" onfocus="placeholder = ''" onblur="placeholder=' - 을 제외한 숫자를 입력해주세요'">
         <button onclick="send()">결제</button>
     </div>
     <script>

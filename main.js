@@ -42,7 +42,6 @@ function addList() {
         if (itemNode[i].selected == true) {
             selectedList.push(itemNode[i].value);
             totalPrice += products[itemNode[i].value].price;
-
         }
     }
     printList()
@@ -54,6 +53,7 @@ function printList(){
     if(selectedList.length != 0) {
         resultNode.innerHTML = '<h3>선택한 상품</h3><ul id = "resultLists"></ul>'
         for (let i = 0; i < selectedList.length; i++){
+            //위의 addList 함수와 마찬가지로 매번 초기화 시켜 중복 출력을 방지
             let resultLists = document.getElementById('resultLists');
             let listNode = document.createElement('li');
             let listNodeText = document.createTextNode(`${products[selectedList[i]].name} - ${products[selectedList[i]].price}`);
@@ -65,12 +65,11 @@ function printList(){
     }else { //기본값은 null
         resultNode.innerHTML = null;
     }
-    console.log(selectedList, totalPrice)
 }
 
 // 결제하기 버튼 이벤트
 buttonNode.addEventListener('click', function(){
-    // 선택된 항목이 없을 시 오류 메시지 출력
+    // 선택된 항목이 없을 시 오류 메시지 출력 후 함수 종료
     if(!selectedList.length){
         alert('결제할 상품을 선택해야 합니다.');
         return;
@@ -80,13 +79,14 @@ buttonNode.addEventListener('click', function(){
 
 // 결제 창에서 결제 완료시 실행할 함수
 function clearData(){
+    // 모든 체크 초기화
     for (let i = 0; i < products.length; i++){
         if (itemNode[i].selected)
             itemNode[i].selected = !itemNode[i].selected;
     }
+    // selectedList 데이터를 초기화한 다음 이미 존재하는 printList() 함수를 통해 결과창 삭제
     selectedList = [];
     totalPrice = 0;
-    // selectedList 데이터를 초기화한 다음 이미 존재하는 printList() 함수를 통해 결과창 삭제
     printList();
 }
 
