@@ -11,7 +11,7 @@
         <div id="price"></div>
         <p>신용카드 번호를 입력하고 결제 버튼을 눌러주세요</p>
         <input id="cardNo" type="text">
-        <button onclick="">결제</button>
+        <button onclick="send()">결제</button>
     </div>
     <script>
         let value = parseInt(opener.document.getElementById('totalPrice').value)
@@ -19,6 +19,16 @@
         priceText = document.createTextNode(`${value} 원을 결제하겠습니다`)
         price.appendChild(priceText)
 
+        let cardNumber = document.getElementById('cardNo')
+
+        function send(){
+            if (cardNumber.value){
+                alert(`${cardNumber.value} 로 ${value} 원이 결제 완료되었습니다`)
+                opener.sendCardData(cardNumber.value) // 결제를 했다는 가정하에 부모창으로 카드 번호 보내기
+                opener.clearData()
+                window.close()
+            }
+        }
     </script>
 </body>
 </html>
