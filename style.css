@@ -1,0 +1,9 @@
+#product:checked {
+    background-color: #339af0;
+    color: white;
+}
+
+#product:focus option:checked {
+    background-color: #339af0;
+    color: white;
+}

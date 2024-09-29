@@ -12,6 +12,8 @@ let products = [
 ]
 
 let prodList = document.getElementById('prodList')
+
+// ctrl이나 shift 없이 다중 선택이 가능하게 하기 위한 이벤트
 prodList.addEventListener('mousedown', function(e){
     e.preventDefault();
     let option = e.target
