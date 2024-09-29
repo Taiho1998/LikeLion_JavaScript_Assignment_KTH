@@ -58,7 +58,8 @@ function printList(){
             listNode.appendChild(listNodeText)
             resultLists.appendChild(listNode)
         }
-        resultNode.innerHTML += `<h3>총액 : ${totalPrice}</h3>`
+        // hidden 속성 input은 결제 페이지로 totalprice를 넘기기 위한 더미 요소
+        resultNode.innerHTML += `<h3>총액 : ${totalPrice}</h3><input type="hidden" id="totalPrice" value="${totalPrice}">`
     }else {
         resultNode.innerHTML = null
     }
@@ -70,5 +71,5 @@ buttonNode.addEventListener('click', function(){
         alert('결제할 상품을 선택해야 합니다.')
         return;
     }
-    
+    window.open('purchase.html', '_blank', 'left=100, top = 100, width = 500, height = 400')
 })
