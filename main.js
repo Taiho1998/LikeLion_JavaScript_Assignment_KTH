@@ -14,11 +14,12 @@ let products = [
 
 let prodList = document.getElementById('prodList')
 let resultNode = document.getElementById('result')
+let buttonNode = document.getElementById('submit')
 for(let i = 0; i < products.length; i++)
     prodList.innerHTML += `<option onclick="addList()" class="product" value="${i}">${products[i].name} - ${products[i].price}</option>`
 let itemNode = document.getElementsByClassName('product')
 // 선택된 항목이 저장되는 배열
-let selectedList;
+let selectedList = [];
 let totalPrice;
 
 
@@ -62,3 +63,12 @@ function printList(){
         resultNode.innerHTML = null
     }
 }
+
+buttonNode.addEventListener('click', function(){
+    // 선택된 항목이 없을 시 오류 메시지 출력
+    if(!selectedList.length){
+        alert('결제할 상품을 선택해야 합니다.')
+        return;
+    }
+    
+})
