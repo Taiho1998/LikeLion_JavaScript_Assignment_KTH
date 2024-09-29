@@ -12,6 +12,13 @@ let products = [
 ]
 
 let prodList = document.getElementById('prodList')
+// 선택된 항목이 저장되는 배열
+let selectedList = []
+let item = document.getElementById('product')
+for(let i = 0; i < products.length; i++)
+    prodList.innerHTML += `<option onclick="addList()" id="product" value="${products[i].name}">${products[i].name} - ${products[i].price}</option>`
+
+
 
 // ctrl이나 shift 없이 다중 선택이 가능하게 하기 위한 이벤트
 prodList.addEventListener('mousedown', function(e){
@@ -23,5 +30,6 @@ prodList.addEventListener('mousedown', function(e){
         option.selected = true;
     }
 
-    console.log(option.selected, option)
+
 })
+ㅇ
